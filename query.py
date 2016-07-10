@@ -5,7 +5,7 @@ import shodan
 with open('SHODAN_API_KEY', 'r') as f:
     SHODAN_API_KEY = f.read().replace('\n', '')
 
-# Maximum number of hosts to retrieve from Shodan
+# Maximum number of hosts to retrieve from Shodan; minimum is 100
 MAX_SHODAN_RESULTS = 1000
 
 # Identifying SSH banners for Raspbian
