@@ -9,7 +9,7 @@ paramiko.util.log_to_file("paramiko.log")
 
 with open('pies.txt') as f:
 	for line in f.readlines():
-		pi = line.split(',')
+		pi = line.split(':')
 		(host, port) = (pi[0], pi[1])
 
 		ssh = paramiko.SSHClient()
