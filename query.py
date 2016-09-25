@@ -9,7 +9,9 @@ with open('SHODAN_API_KEY', 'r') as f:
 MAX_SHODAN_RESULTS = 1000
 
 # Identifying SSH banners for Raspbian
-SSH_BANNERS = ['SSH-2.0-OpenSSH_6.7p1 Raspbian-5+deb8u1', 'SSH-2.0-OpenSSH_6.7p1 Raspbian-5+deb8u2']
+SSH_BANNERS = ['SSH-2.0-OpenSSH_6.7p1 Raspbian-5+deb8u1',
+                'SSH-2.0-OpenSSH_6.7p1 Raspbian-5+deb8u2',
+                'SSH-2.0-OpenSSH_6.7p1 Raspbian-5+deb8u3']
 
 api = shodan.Shodan(SHODAN_API_KEY)
 
