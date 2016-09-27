@@ -15,15 +15,16 @@ def init_shodan():
         key = f.read().strip().replace('\n', '')
     return shodan.Shodan(key)
 
-def search_shodan(max_results=500):
+def search_shodan(max_results=100):
     api = init_shodan()
 
     for banner in BANNERS:
-        for page in range(1, 1 + (max_results / (len(BANNERS) * 100))):
-            results = api.search(banner, page)
-            for r in results['matches']:
-                sys.stdout.write(r['ip_str'] + ':' + str(r['port']) + '\n')
-                sys.stdout.flush()
+        results = api.search(banner, limit=max_results / len(BANNERS))
+        for r in results['matches']:
+            sys.stdout.write(r['ip_str'] + ':' + str(r['port']) + '\n')
 
 if __name__ == '__main__':
-    search_shodan(int(sys.argv[1]))
+    if len(sys.argv) > 1:
+        search_shodan(int(sys.argv[1]))
+    else:
+        search_shodan()
