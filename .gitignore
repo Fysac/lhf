@@ -1,4 +1,4 @@
 env/
+*.pyc
 SHODAN_API_KEY
 paramiko.log
-owned_pies.txt
