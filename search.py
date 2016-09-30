@@ -19,7 +19,7 @@ def search_shodan(max_results=100):
     api = init_shodan()
 
     for banner in BANNERS:
-        results = api.search(banner, limit=max_results / len(BANNERS))
+        results = api.search(banner, limit=(max_results / len(BANNERS)))
         for r in results['matches']:
             sys.stdout.write(r['ip_str'] + ':' + str(r['port']) + '\n')
 
