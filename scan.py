@@ -1,15 +1,16 @@
-#!/usr/bin/env python
-
 import paramiko
 import sys
 
 USER = 'pi'
 PASS = 'raspberry'
 CONN_TIMEOUT = 4
+PARAMIKO_LOGGING = False
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-paramiko.util.log_to_file("paramiko.log")
+
+if PARAMIKO_LOGGING:
+    paramiko.util.log_to_file("paramiko.log")
 
 with open('pies.txt') as f:
     for line in f.readlines():
