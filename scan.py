@@ -3,8 +3,9 @@ import sys
 
 USER = 'pi'
 PASS = 'raspberry'
-CONN_TIMEOUT = 4
+
 PARAMIKO_LOGGING = False
+TIMEOUT = 5
 
 ssh = paramiko.SSHClient()
 ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
