@@ -16,7 +16,7 @@ if PARAMIKO_LOGGING:
         os.makedirs(LOG_DIR)
     paramiko.util.log_to_file(LOG_DIR + 'paramiko.log')
 
-def attempt_login():
+def brute_force():
     for line in sys.stdin.readlines():
         pi = line.split(':')
         (host, port) = (pi[0], pi[1].replace('\n', ''))
@@ -32,4 +32,4 @@ def attempt_login():
             continue
 
 if __name__ == '__main__':
-    attempt_login()
+    brute_force()
