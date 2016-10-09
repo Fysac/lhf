@@ -19,7 +19,7 @@ I am not responsible for your actions; lhf should only be used for educational p
 ### Examples
 Find 100 Raspberry Pis on Shodan (ports 22 and 2222):
 
-`python find.py 600`
+`python find.py 100`
 
 Find 100 Pis, attempt logins, and write unsecured Pis to file:
 
