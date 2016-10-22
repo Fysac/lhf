@@ -23,6 +23,6 @@ Obligatory disclaimer: in the United States, it is illegal to log in to a remote
 
 In true Unix fashion, lhf operates entirely on standard streams. This means you can chain commands together like so:
 
-    python find.py 500 | python scan.py > owned_pies.txt
+    python find.py 500 | python scan.py 100 > owned_pies.txt
 
-This command will find at most 500 Raspberry Pis, scan them all, and write the vulnerable host:port combos to a file.
+This command will find at most 500 Raspberry Pis, scan them all using 100 threads, and write the vulnerable host:port combos to a file.
