@@ -4,23 +4,25 @@ Low-Hanging Fruit: A toolset for finding unsecured Raspberry Pis
 
 ### Overview
 
-lhf uses Shodan to search for Internet-connected Raspberry Pis, then attempts to SSH into them with the default admin credentials (`pi`:`raspberry`).
+lhf uses Shodan to search for Internet-connected Raspberry Pis, then attempts to SSH into them with the default admin credentials (pi:raspberry).
 
-On a default install of Raspbian, `pi` has full sudo access – if you can log in, you already have root.
+On a default install of Raspbian, the pi user has full sudo access – so if you can log in, you basically have root.
 
-I am not responsible for your actions; lhf should only be used for educational purposes with consent; etc., etc.
+Obligatory disclaimer: in the United States, it is illegal to log in to a remote machine without the owner's explicit consent. I offer lhf for learning purposes only. I am not responsible for your actions.
 
-### Dependencies
-* `find.py`
- * `pip install shodan`
-* `brute.py`
- * `pip install paramiko`
+### Setup
+    git clone https://github.com/Fysac/lhf
+    cd lhf && virtualenv .env && source .env/bin/activate
+    pip install shodan paramiko
 
-### Examples
-Find 100 Raspberry Pis on Shodan (ports 22 and 2222):
+### Usage
 
-`python find.py 100`
+`find.py <max results=100>`
 
-Find 100 Pis, attempt logins, and write unsecured Pis to file:
+`scan.py <threads=100>`
 
-`python find.py 100 | python brute.py > owned_pies.txt`
+In true Unix fashion, lhf operates entirely on standard input and output. This means you can chain commands together like so:
+
+    # Find 500 Pis, scan them all, and write the vulnerable host:port combos to a file.
+
+    python find.py 500 | python scan.py > owned_pies.txt
