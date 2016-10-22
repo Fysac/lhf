@@ -19,7 +19,7 @@ Obligatory disclaimer: in the United States, it is illegal to log in to a remote
 
 `find.py <max results=100>`
 
-`scan.py <threads=100>`
+`scan.py <threads=10>`
 
 In true Unix fashion, lhf operates entirely on standard streams. This means you can chain commands together like so:
 
