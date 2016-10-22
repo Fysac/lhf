@@ -11,9 +11,15 @@ On a default install of Raspbian, the pi user has full sudo access – so if you
 Obligatory disclaimer: in the United States, it is illegal to log in to a remote machine without the owner's explicit consent. I offer lhf for learning purposes only. I am not responsible for your actions.
 
 ### Setup
+I've only tested lhf on Linux, but it should work on Windows and ~~OS X~~ macOS with few changes, if any.
+
     git clone https://github.com/Fysac/lhf
     cd lhf && virtualenv .env && source .env/bin/activate
     pip install shodan paramiko
+
+After the dependencies are installed, you just need to add your Shodan API Key:
+
+    echo "YOUR KEY HERE" > SHODAN_API_KEY
 
 ### Usage
 
