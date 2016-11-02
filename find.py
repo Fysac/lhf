@@ -10,14 +10,14 @@ def init_shodan():
         key = f.read().strip().replace('\n', '')
     return shodan.Shodan(key)
 
-# todo: Find workaround for large queries.
-# Shodan doesn't like it when max_results > 1000, gives:
-# shodan.exception.APIError: Unable to parse JSON response
 def search_shodan(max_results=100):
     api = init_shodan()
-    results = api.search(QUERY, limit=max_results)
-    for r in results['matches']:
-        sys.stdout.write(r['ip_str'] + ':' + str(r['port']) + '\n')
+    i = 0
+    for result in api.search_cursor(QUERY, minify=True):
+        sys.stdout.write(result['ip_str'] + ':' + str(result['port']) + '\n')
+        i += 1
+        if i == max_results:
+            return
 
 if __name__ == '__main__':
     if len(sys.argv) > 1:

@@ -1,4 +1,4 @@
-env/
+.env/
 log/
 *.pyc
 SHODAN_API_KEY
