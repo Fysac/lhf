@@ -5,8 +5,8 @@ import Queue
 from threading import Thread
 
 def ssh_login(q):
-    USERNAME = 'pi'
-    PASSWORD = 'raspberry'
+    USER = 'pi'
+    PASS = 'raspberry'
 
     while not q.empty():
         (host, port) = q.get()
@@ -14,7 +14,8 @@ def ssh_login(q):
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
         try:
-            ssh.connect(host, port=int(port), username=USERNAME, password=PASSWORD, allow_agent=False, look_for_keys=False, timeout=10)
+            ssh.connect(host, port=int(port), username=USER, password=PASS,
+            allow_agent=False, look_for_keys=False, timeout=10)
         except Exception as e:
             sys.stderr.write(host + ':' + port + ': ' + str(e) + '\n')
             sys.stderr.flush()
