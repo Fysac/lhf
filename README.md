@@ -15,7 +15,7 @@ I've only tested lhf on Linux, but it should work on Windows and ~~OS X~~ macOS 
 
     git clone https://github.com/Fysac/lhf
     cd lhf && virtualenv .env && source .env/bin/activate
-    pip install shodan paramiko
+    pip install -r requirements.txt
 
 After the dependencies are installed, you just need to add your Shodan API Key:
 
