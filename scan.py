@@ -44,14 +44,6 @@ def scan(num_threads=10):
     q.join()
 
 if __name__ == '__main__':
-    LOGGING = False
-
-    if LOGGING:
-        LOG_DIR = './log/'
-        if not os.path.exists(LOG_DIR):
-            os.makedirs(LOG_DIR)
-        paramiko.util.log_to_file(LOG_DIR + 'paramiko.log')
-
     if len(sys.argv) > 1:
         scan(int(sys.argv[1]))
     else:
