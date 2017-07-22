@@ -6,19 +6,19 @@ import paramiko
 import Queue
 from threading import Thread
 
+username = 'pi'
+password = 'raspberry'
 connect_timeout = 5
 
 def ssh_login(q):
-    USER = 'pi'
-    PASS = 'raspberry'
-
     while not q.empty():
         (host, port) = q.get()
+
         ssh = paramiko.SSHClient()
         ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
         try:
-            ssh.connect(host, port=int(port), username=USER, password=PASS,
+            ssh.connect(host, port=int(port), username=username, password=password,
             allow_agent=False, look_for_keys=False, timeout=connect_timeout)
         except Exception as e:
             sys.stderr.write(host + ':' + port + ': ' + str(e) + '\n')
@@ -28,6 +28,7 @@ def ssh_login(q):
             sys.stdout.flush()
         finally:
             ssh.close()
+
         q.task_done()
 
 def scan(num_threads=50):
