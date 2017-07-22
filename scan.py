@@ -6,6 +6,8 @@ import paramiko
 import Queue
 from threading import Thread
 
+connect_timeout = 5
+
 def ssh_login(q):
     USER = 'pi'
     PASS = 'raspberry'
@@ -17,7 +19,7 @@ def ssh_login(q):
 
         try:
             ssh.connect(host, port=int(port), username=USER, password=PASS,
-            allow_agent=False, look_for_keys=False, timeout=10)
+            allow_agent=False, look_for_keys=False, timeout=connect_timeout)
         except Exception as e:
             sys.stderr.write(host + ':' + port + ': ' + str(e) + '\n')
             sys.stderr.flush()
