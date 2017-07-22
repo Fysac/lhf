@@ -28,7 +28,7 @@ def ssh_login(q):
             ssh.close()
         q.task_done()
 
-def scan(num_threads=10):
+def scan(num_threads=50):
     q = Queue.Queue()
 
     for line in sys.stdin.readlines():
